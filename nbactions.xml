@@ -12,10 +12,10 @@
             </goals>
             <properties>
                 <exec.vmArgs></exec.vmArgs>
-                
-                
-                
-                
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
+                <exec.appArgs></exec.appArgs>
+                <exec.mainClass>${packageClassName}</exec.mainClass>
+                <exec.executable>java</exec.executable>
             </properties>
         </action>
         <action>
@@ -29,12 +29,12 @@
                 
             </goals>
             <properties>
-                <exec.vmArgs></exec.vmArgs>
-                
-                
-                
-                
-                
+                <exec.vmArgs>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
+                <exec.appArgs></exec.appArgs>
+                <exec.mainClass>${packageClassName}</exec.mainClass>
+                <exec.executable>java</exec.executable>
+                <jpda.listen>true</jpda.listen>
             </properties>
         </action>
         <action>
@@ -49,10 +49,10 @@
             </goals>
             <properties>
                 <exec.vmArgs></exec.vmArgs>
-                
-                
-                
-                
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
+                <exec.executable>java</exec.executable>
+                <exec.mainClass>${packageClassName}</exec.mainClass>
+                <exec.classpathScope>${classPathScope}</exec.classpathScope>
             </properties>
         </action>
     </actions>
